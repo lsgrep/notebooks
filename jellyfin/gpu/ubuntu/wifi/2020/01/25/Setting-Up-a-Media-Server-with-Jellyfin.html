@@ -115,22 +115,30 @@ of my place with USB WiFi stick plugged in.</p>
 
 <h1 id="wifi">WiFi</h1>
 
-<h4 id="check-available-devices">check available devices</h4>
+<ul>
+  <li>check available devices</li>
+</ul>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">iwconfig</span>
 </code></pre></div></div>
 
-<h4 id="bring-the-device-up">bring the device up</h4>
+<ul>
+  <li>bring the device up</li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ifconfig wlp4s0 up
 </code></pre></div></div>
 
-<h4 id="check-available-wireless-networks">check available wireless networks</h4>
+<ul>
+  <li>check available wireless networks</li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>iwlist wlp4s0 scan | <span class="nb">grep </span>ESSID
 </code></pre></div></div>
 
-<h4 id="connect-to-the-network">connect to the network</h4>
+<ul>
+  <li>connect to the network</li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># generate &amp; save password</span>
 wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span> /etc/wpa_supplicant.conf
@@ -141,7 +149,9 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 <span class="nb">sudo </span>dhclient wlp4s0
 </code></pre></div></div>
 
-<h4 id="autoconnect-to-wifi-after-reboot">Autoconnect to WiFi after reboot</h4>
+<ul>
+  <li>Autoconnect to WiFi after reboot</li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># crontab for the user root</span>
 <span class="nb">sudo </span>crontabe <span class="nt">-u</span> root <span class="nt">-e</span>
@@ -160,13 +170,19 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 /sbin/dhclient wlp4s0 <span class="o">||</span> <span class="nb">true</span>
 </code></pre></div></div>
 
-<h4 id="disable-wifi-power-saving">Disable WiFi power saving</h4>
+<ul>
+  <li>
+    <p>Disable WiFi power saving</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Disable wifi power management directly by editing `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf` and
-  changed the value from 3 to 2, saved changes and reboot.
-</code></pre></div></div>
-
-<h4 id="performance-tweaks">Performance Tweaks</h4>
+    <ul>
+      <li>Disable wifi power management directly by editing <code class="language-plaintext highlighter-rouge">/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf</code> and
+changed the value from 3 to 2, saved changes and reboot.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance Tweaks</p>
+  </li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># To ameliorate the connection through the intel wifi card you can:</span>
 
@@ -192,7 +208,9 @@ the trick.</p>
 
 <h1 id="media-server">Media Server</h1>
 
-<h4 id="jellyfin">Jellyfin</h4>
+<ul>
+  <li>Jellyfin</li>
+</ul>
 
 <p>Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
 line for this. You have to install nvidia-docker2 before hand.</p>
@@ -218,10 +236,10 @@ Jellyfin is using GPU when transcoding content.</p>
 
 <p><img src="/images/jellyfin-nvidia.png" alt="jellyfin-nvidia" /></p>
 
-<h4 id="subtitles">Subtitles</h4>
-
-<p>Register an <a href="http://opensubtitles.org">OpenSubtitles.org</a> account and install the plugin for the Jellyfin. You have to
-login with your account in the plugin settings page.</p>
+<ul>
+  <li>Register an <a href="http://opensubtitles.org">OpenSubtitles.org</a> account and install the plugin for the Jellyfin. You have
+ to login with your account in the plugin settings page.</li>
+</ul>
 
 <h1 id="syncing-remote-folders">Syncing Remote Folders</h1>
 
