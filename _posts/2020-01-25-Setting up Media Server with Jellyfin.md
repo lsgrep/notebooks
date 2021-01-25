@@ -1,11 +1,12 @@
 ---
 title: "Setting Up a Media Server with Jellyfin"
-description: "tinkering a media server"
+description: ""
 layout: post
 toc: false
 comments: true
 hide: false
-categories: [hacking]
+categories: [fun]
+image: assets/jellyfin-nvidia.png
 ---
 I have an Ubuntu desktop machine with an old Nvidia card.  It has OKish specs, but it is a bit noisy for my liking.  In short, I've made it into a publicly accessible Jellyfin media server with Traefik+Wireguard and moved it to the corner of my place with USB WiFi stick plugged in.
 
@@ -51,7 +52,7 @@ sudo crontabe -u root -e
 # @reboot sleep 5 && /usr/local/bin/wlan.sh 2>&1 >> /var/log/reboot.log
 ```
 
-![Media%20Server%20with%20Jellyfin%2008e039ad67ec4f22b81b8e6edeb5ca23/Screen_Shot_2021-01-10_at_11.15.03_AM.png](Media%20Server%20with%20Jellyfin%2008e039ad67ec4f22b81b8e6edeb5ca23/Screen_Shot_2021-01-10_at_11.15.03_AM.png)
+![crontab](assets/crontab.png)
 
 ```bash
 #!/bin/bash
