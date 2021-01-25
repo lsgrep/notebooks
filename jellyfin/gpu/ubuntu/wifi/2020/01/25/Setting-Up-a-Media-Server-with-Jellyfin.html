@@ -129,6 +129,8 @@ of my place with USB WiFi stick plugged in.</p>
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">iwconfig</span>
 </code></pre></div></div>
 
+<p><code class="language-plaintext highlighter-rouge">wlp4s0</code> is the device name for my USB WiFi stick.</p>
+
 <ul>
   <li>bring the device up</li>
 </ul>
@@ -216,11 +218,11 @@ the trick.</p>
 <h1 id="media-server">Media Server</h1>
 
 <ul>
-  <li>Jellyfin</li>
+  <li>Jellyfin
+Jellyfin is free &amp; open source, and it is not bloated with ads.
+Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
+line for this. You have to install nvidia-docker2 before hand.</li>
 </ul>
-
-<p>Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
-line for this. You have to install nvidia-docker2 before hand.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
  <span class="nt">--name</span><span class="o">=</span>jellyfin <span class="se">\</span>
@@ -257,7 +259,7 @@ Jellyfin is using GPU when transcoding content.</p>
 
 <h1 id="internet-access">Internet Access</h1>
 
-<p>The desktop is connected to a VPS instance with WireGuard.</p>
+<p>The desktop is connected to a VPS instance with WireGuard. WireGuard is pretty easy to setup.</p>
 
 <p>Here is the Traefik configuration on the VPS instance.</p>
 
@@ -388,6 +390,8 @@ http:
 					<span class="c"># wireguard IP address of media server</span>
           - url: http://WIREGUARD_IP_OF_MEDIA_SERVER:8096 
 </code></pre></div></div>
+
+<p>After setting this up, you can visit your Jellyfin from anywhere you like.</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
