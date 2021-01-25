@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Setting Up a Media Server with Jellyfin | lsgrep</title>
+<title>Setting up a media server with Jellyfin | lsgrep</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Setting Up a Media Server with Jellyfin" />
+<meta property="og:title" content="Setting up a media server with Jellyfin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="hacking Ubuntu Desktop" />
 <meta property="og:description" content="hacking Ubuntu Desktop" />
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-01-25T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://lsgrep.github.io/jellyfin/gpu/ubuntu/wifi/2020/01/25/Setting-Up-a-Media-Server-with-Jellyfin.html","@type":"BlogPosting","headline":"Setting Up a Media Server with Jellyfin","dateModified":"2020-01-25T00:00:00-06:00","datePublished":"2020-01-25T00:00:00-06:00","image":"https://lsgrep.github.io/images/jellyfin-nvidia.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://lsgrep.github.io/jellyfin/gpu/ubuntu/wifi/2020/01/25/Setting-Up-a-Media-Server-with-Jellyfin.html"},"description":"hacking Ubuntu Desktop","@context":"https://schema.org"}</script>
+{"url":"https://lsgrep.github.io/jellyfin/gpu/ubuntu/wifi/2020/01/25/Setting-Up-a-Media-Server-with-Jellyfin.html","@type":"BlogPosting","headline":"Setting up a media server with Jellyfin","dateModified":"2020-01-25T00:00:00-06:00","datePublished":"2020-01-25T00:00:00-06:00","image":"https://lsgrep.github.io/images/jellyfin-nvidia.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://lsgrep.github.io/jellyfin/gpu/ubuntu/wifi/2020/01/25/Setting-Up-a-Media-Server-with-Jellyfin.html"},"description":"hacking Ubuntu Desktop","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://lsgrep.github.io/feed.xml" title="lsgrep" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -78,7 +78,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Setting Up a Media Server with Jellyfin</h1><p class="page-description">hacking Ubuntu Desktop</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-01-25T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Setting up a media server with Jellyfin</h1><p class="page-description">hacking Ubuntu Desktop</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-01-25T00:00:00-06:00" itemprop="datePublished">
         Jan 25, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -91,7 +91,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="//categories/#jellyfin">jellyfin</a>
+        <a class="category-tags-link" href="//categories/#Jellyfin">Jellyfin</a>
         &nbsp;
       
         <a class="category-tags-link" href="//categories/#GPU">GPU</a>
@@ -115,30 +115,30 @@ of my place with USB WiFi stick plugged in.</p>
 
 <h1 id="wifi">WiFi</h1>
 
-<ol>
+<ul>
   <li>check available devices</li>
-</ol>
+</ul>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">iwconfig</span>
 </code></pre></div></div>
 
-<ol>
+<ul>
   <li>bring the device up</li>
-</ol>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ifconfig wlp4s0 up
 </code></pre></div></div>
 
-<ol>
+<ul>
   <li>check available wireless networks</li>
-</ol>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>iwlist wlp4s0 scan | <span class="nb">grep </span>ESSID
 </code></pre></div></div>
 
-<ol>
+<ul>
   <li>connect to the network</li>
-</ol>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># generate &amp; save password</span>
 wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span> /etc/wpa_supplicant.conf
@@ -149,9 +149,9 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 <span class="nb">sudo </span>dhclient wlp4s0
 </code></pre></div></div>
 
-<ol>
+<ul>
   <li>Autoconnect to WiFi after reboot</li>
-</ol>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># crontab for the user root</span>
 <span class="nb">sudo </span>crontabe <span class="nt">-u</span> root <span class="nt">-e</span>
@@ -170,18 +170,19 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 /sbin/dhclient wlp4s0 <span class="o">||</span> <span class="nb">true</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Disable WiFi power saving</li>
-</ol>
-
 <ul>
-  <li>Disable wifi power management directly by editing <code class="language-plaintext highlighter-rouge">/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf</code> and
-changed the value from 3 to 2, saved changes and reboot.</li>
-</ul>
+  <li>
+    <p>Disable WiFi power saving</p>
 
-<ol>
-  <li>Performance Tweaks</li>
-</ol>
+    <ul>
+      <li>Disable wifi power management directly by editing <code class="language-plaintext highlighter-rouge">/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf</code> and
+changed the value from 3 to 2, saved changes and reboot.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance Tweaks</p>
+  </li>
+</ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># To ameliorate the connection through the intel wifi card you can:</span>
 
@@ -205,11 +206,11 @@ the trick.</p>
 
 <p><a href="https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b">https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b</a></p>
 
-<h1 id="media-center">Media Center</h1>
+<h1 id="media-server">Media Server</h1>
 
-<ol>
-  <li>Service</li>
-</ol>
+<ul>
+  <li>Jellyfin</li>
+</ul>
 
 <p>Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
 line for this. You have to install nvidia-docker2 before hand.</p>
@@ -230,15 +231,15 @@ line for this. You have to install nvidia-docker2 before hand.</p>
  jellyfin/jellyfin:unstable
 </code></pre></div></div>
 
-<p>Since it is sharing(<code class="language-plaintext highlighter-rouge">--pid host</code>) PID namespace with host,
-you can run <code class="language-plaintext highlighter-rouge">nvidia-smi</code> on host machine directly to see if Jellyfin is using GPU when transcoding content.</p>
+<p>Since it is sharing(<code class="language-plaintext highlighter-rouge">--pid host</code>) PID namespace with host, you can run <code class="language-plaintext highlighter-rouge">nvidia-smi</code> on host machine directly to see if
+Jellyfin is using GPU when transcoding content.</p>
 
 <p><img src="/images/jellyfin-nvidia.png" alt="jellyfin-nvidia" /></p>
 
-<ol>
+<ul>
   <li>Register an <a href="http://opensubtitles.org">OpenSubtitles.org</a> account and install the plugin for the Jellyfin. You have
-to login with your account in the plugin settings page.</li>
-</ol>
+ to login with your account in the plugin settings page.</li>
+</ul>
 
 <h1 id="syncing-remote-folders">Syncing Remote Folders</h1>
 
@@ -249,9 +250,11 @@ to login with your account in the plugin settings page.</li>
 
 <h1 id="internet-access">Internet Access</h1>
 
-<ol>
-  <li>A somewhat secure Traefik frontend with automated TLS certificates.</li>
-</ol>
+<p>The desktop is connected to a VPS instance with WireGuard.</p>
+
+<p>Here is the Traefik configuration on the VPS instance.</p>
+
+<p>A somewhat secure Traefik frontend with automated TLS certificates.</p>
 
 <div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># docker-compose.yaml</span>
 version: '3.8'
