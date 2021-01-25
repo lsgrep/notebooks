@@ -43,7 +43,7 @@ minima:
     github: lsgrep
 
 # Set this to true to get LaTeX math equation support
-use_math: 
+use_math:
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
@@ -58,7 +58,7 @@ annotations: true
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics: G-ZZ1B0TNQXY
+google_analytics: G-E34VWJ55CQ
 
 exclude:
   - docker-compose.yml
