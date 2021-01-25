@@ -160,7 +160,7 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 <span class="c"># @reboot sleep 5 &amp;&amp; /usr/local/bin/wlan.sh 2&gt;&amp;1 &gt;&gt; /var/log/reboot.log</span>
 </code></pre></div></div>
 
-<p><img src="images/crontab.png" alt="crontab" /></p>
+<p><img src="/images/crontab.png" alt="crontab" /></p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># wlan.sh</span>
@@ -233,7 +233,7 @@ line for this. You have to install nvidia-docker2 before hand.</p>
 <p>Since it is sharing(<code class="language-plaintext highlighter-rouge">--pid host</code>) PID namespace with host,
 you can run <code class="language-plaintext highlighter-rouge">nvidia-smi</code> on host machine directly to see if Jellyfin is using GPU when transcoding content.</p>
 
-<p><img src="images/jellyfin-nvidia.png" alt="jellyfin-nvidia" /></p>
+<p><img src="/images/jellyfin-nvidia.png" alt="jellyfin-nvidia" /></p>
 
 <ol>
   <li>Register an <a href="http://opensubtitles.org">OpenSubtitles.org</a> account and install the plugin for the Jellyfin. You have
