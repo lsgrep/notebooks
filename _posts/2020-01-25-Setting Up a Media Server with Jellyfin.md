@@ -1,7 +1,11 @@
 ---
 title: "Setting up a media server with Jellyfin"
 description: "hacking Ubuntu Desktop"
-layout: post toc: false comments: true hide: false categories: [Jellyfin, GPU, Ubuntu, WiFi]
+layout: post 
+toc: false 
+comments: true 
+hide: false 
+categories: [Jellyfin, GPU, Ubuntu, WiFi]
 image: /images/jellyfin-nvidia.png
 ---
 I have an Ubuntu desktop machine with an old Nvidia card. It has OKish specs, but it is a bit noisy for my liking. In
