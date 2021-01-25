@@ -8,15 +8,16 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Setting Up a Media Server with Jellyfin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="tinkering a media server" />
-<meta property="og:description" content="tinkering a media server" />
-<link rel="canonical" href="https://lsgrep.github.io/hacking/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" />
-<meta property="og:url" content="https://lsgrep.github.io/hacking/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" />
+<meta name="description" content="“In God we trust, all others must bring data.” – W. Edwards Deming" />
+<meta property="og:description" content="“In God we trust, all others must bring data.” – W. Edwards Deming" />
+<link rel="canonical" href="https://lsgrep.github.io/fun/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" />
+<meta property="og:url" content="https://lsgrep.github.io/fun/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" />
 <meta property="og:site_name" content="lsgrep" />
+<meta property="og:image" content="https://lsgrep.github.io/assets/jellyfin-nvidia.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-01-25T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://lsgrep.github.io/hacking/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html","@type":"BlogPosting","headline":"Setting Up a Media Server with Jellyfin","dateModified":"2020-01-25T00:00:00-06:00","datePublished":"2020-01-25T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://lsgrep.github.io/hacking/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html"},"description":"tinkering a media server","@context":"https://schema.org"}</script>
+{"url":"https://lsgrep.github.io/fun/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html","@type":"BlogPosting","headline":"Setting Up a Media Server with Jellyfin","dateModified":"2020-01-25T00:00:00-06:00","datePublished":"2020-01-25T00:00:00-06:00","image":"https://lsgrep.github.io/assets/jellyfin-nvidia.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://lsgrep.github.io/fun/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html"},"description":"“In God we trust, all others must bring data.” – W. Edwards Deming","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://lsgrep.github.io/feed.xml" title="lsgrep" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
@@ -71,7 +72,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Setting Up a Media Server with Jellyfin</h1><p class="page-description">tinkering a media server</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-01-25T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Setting Up a Media Server with Jellyfin</h1><p class="page-description"></p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-01-25T00:00:00-06:00" itemprop="datePublished">
         Jan 25, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -84,7 +85,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="//categories/#hacking">hacking</a>
+        <a class="category-tags-link" href="//categories/#fun">fun</a>
         
       
       </p>
@@ -142,7 +143,7 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
 <span class="c"># @reboot sleep 5 &amp;&amp; /usr/local/bin/wlan.sh 2&gt;&amp;1 &gt;&gt; /var/log/reboot.log</span>
 </code></pre></div></div>
 
-<p><img src="Media%20Server%20with%20Jellyfin%2008e039ad67ec4f22b81b8e6edeb5ca23/Screen_Shot_2021-01-10_at_11.15.03_AM.png" alt="Media%20Server%20with%20Jellyfin%2008e039ad67ec4f22b81b8e6edeb5ca23/Screen_Shot_2021-01-10_at_11.15.03_AM.png" /></p>
+<p><img src="assets/crontab.png" alt="crontab" /></p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 <span class="c"># wlan.sh</span>
@@ -360,7 +361,7 @@ http:
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/hacking/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" hidden></a>
+</script><a class="u-url" href="/fun/2020/01/25/Setting-up-Media-Server-with-Jellyfin.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
