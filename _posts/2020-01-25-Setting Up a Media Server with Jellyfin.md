@@ -1,5 +1,5 @@
 ---
-title: "Setting Up a Media Server with Jellyfin"
+title: "Setting up a media server with Jellyfin"
 description: "hacking Ubuntu Desktop"
 layout: post toc: false comments: true hide: false categories: [jellyfin, GPU, Ubuntu, WiFi]
 image: /images/jellyfin-nvidia.png
