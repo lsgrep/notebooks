@@ -99,8 +99,7 @@ Honestly I don't use this at all, but I think it is nice to have.
 
 # Media Server
 
-- Jellyfin
-Jellyfin is free & open source, and it is not bloated with ads.
+- Jellyfin is free & open source, and it is not bloated with ads.
 Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
 line for this. You have to install nvidia-docker2 before hand.
 
@@ -127,7 +126,7 @@ Jellyfin is using GPU when transcoding content.
 ![jellyfin-nvidia](/images/jellyfin-nvidia.png)
 
 - Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have
-   to login with your account in the plugin settings page.
+   to login with your account in the plugin settings page. With this you can add subtitles to your videos without too much effort.
 
 # Syncing Remote Folders
 
