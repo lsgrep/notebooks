@@ -6,7 +6,7 @@ toc: false
 comments: true 
 hide: false 
 categories: [jellyfin, GPU, Ubuntu, WiFi]
-image: images/jellyfin-nvidia.png
+image: /images/jellyfin-nvidia.png
 ---
 I have an Ubuntu desktop machine with an old Nvidia card. It has OKish specs, but it is a bit noisy for my liking. In
 short, I've made it into a publicly accessible Jellyfin media server with Traefik+Wireguard and moved it to the corner
@@ -54,7 +54,7 @@ sudo crontabe -u root -e
 # @reboot sleep 5 && /usr/local/bin/wlan.sh 2>&1 >> /var/log/reboot.log
 ```
 
-![crontab](images/crontab.png)
+![crontab](/images/crontab.png)
 
 ```bash
 #!/bin/bash
@@ -122,7 +122,7 @@ docker run -d \
 Since it is sharing(`--pid host`) PID namespace with host,
 you can run `nvidia-smi` on host machine directly to see if Jellyfin is using GPU when transcoding content.
 
-![jellyfin-nvidia](images/jellyfin-nvidia.png)
+![jellyfin-nvidia](/images/jellyfin-nvidia.png)
 
 
 2. Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have
