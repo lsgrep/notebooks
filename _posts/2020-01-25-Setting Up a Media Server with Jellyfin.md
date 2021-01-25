@@ -20,6 +20,8 @@ of my place with USB WiFi stick plugged in.
 iwconfig
 ```
 
+`wlp4s0` is the device name for my USB WiFi stick.
+
 - bring the device up
 
 ```bash
@@ -98,7 +100,7 @@ Honestly I don't use this at all, but I think it is nice to have.
 # Media Server
 
 - Jellyfin
-
+Jellyfin is free & open source, and it is not bloated with ads.
 Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
 line for this. You have to install nvidia-docker2 before hand.
 
@@ -137,7 +139,7 @@ rclone sync --max-delete 0 -v REMOTE_DRIVE:legal_movies movies --stats 10s
 
 # Internet Access
 
-The desktop is connected to a VPS instance with WireGuard.  
+The desktop is connected to a VPS instance with WireGuard. WireGuard is pretty easy to setup.
 
 Here is the Traefik configuration on the VPS instance.
 
@@ -271,3 +273,5 @@ http:
 					# wireguard IP address of media server
           - url: http://WIREGUARD_IP_OF_MEDIA_SERVER:8096 
 ```
+
+After setting this up, you can visit your Jellyfin from anywhere you like.
