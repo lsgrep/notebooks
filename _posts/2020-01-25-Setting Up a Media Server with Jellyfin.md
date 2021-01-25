@@ -1,11 +1,7 @@
 ---
 title: "Setting Up a Media Server with Jellyfin"
 description: "hacking Ubuntu Desktop"
-layout: post 
-toc: false 
-comments: true 
-hide: false 
-categories: [jellyfin, GPU, Ubuntu, WiFi]
+layout: post toc: false comments: true hide: false categories: [jellyfin, GPU, Ubuntu, WiFi]
 image: /images/jellyfin-nvidia.png
 ---
 I have an Ubuntu desktop machine with an old Nvidia card. It has OKish specs, but it is a bit noisy for my liking. In
@@ -14,25 +10,25 @@ of my place with USB WiFi stick plugged in.
 
 # WiFi
 
-1. check available devices
+- check available devices
 
 ```jsx
 iwconfig
 ```
 
-2. bring the device up
+- bring the device up
 
 ```bash
 sudo ifconfig wlp4s0 up
 ```
 
-3. check available wireless networks
+- check available wireless networks
 
 ```bash
 sudo iwlist wlp4s0 scan | grep ESSID
 ```
 
-4. connect to the network
+- connect to the network
 
 ```bash
 # generate & save password
@@ -44,7 +40,7 @@ sudo wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0
 sudo dhclient wlp4s0
 ```
 
-5. Autoconnect to WiFi after reboot
+- Autoconnect to WiFi after reboot
 
 ```bash
 # crontab for the user root
@@ -65,12 +61,12 @@ sudo crontabe -u root -e
 /sbin/dhclient wlp4s0 || true
 ```
 
-6. Disable WiFi power saving
+- Disable WiFi power saving
 
-- Disable wifi power management directly by editing `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf` and
-  changed the value from 3 to 2, saved changes and reboot.
+    - Disable wifi power management directly by editing `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf` and
+      changed the value from 3 to 2, saved changes and reboot.
 
-7. Performance Tweaks
+- Performance Tweaks
 
 ```bash
 # To ameliorate the connection through the intel wifi card you can:
@@ -95,9 +91,9 @@ Honestly I don't use this at all, but I think it is nice to have.
 
 [https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b](https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b)
 
-# Media Center
+# Media Server
 
-1. Service
+- Jellyfin
 
 Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
 line for this. You have to install nvidia-docker2 before hand.
@@ -119,13 +115,12 @@ docker run -d \
  jellyfin/jellyfin:unstable
 ```
 
-Since it is sharing(`--pid host`) PID namespace with host,
-you can run `nvidia-smi` on host machine directly to see if Jellyfin is using GPU when transcoding content.
+Since it is sharing(`--pid host`) PID namespace with host, you can run `nvidia-smi` on host machine directly to see if
+Jellyfin is using GPU when transcoding content.
 
 ![jellyfin-nvidia](/images/jellyfin-nvidia.png)
 
-
-2. Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have
+- Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have
    to login with your account in the plugin settings page.
 
 # Syncing Remote Folders
