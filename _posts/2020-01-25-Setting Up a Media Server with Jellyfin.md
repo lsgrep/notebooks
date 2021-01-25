@@ -1,14 +1,16 @@
 ---
 title: "Setting Up a Media Server with Jellyfin"
-description: ""
-layout: post
-toc: false
-comments: true
-hide: false
-categories: [fun]
-image: assets/jellyfin-nvidia.png
+description: "hacking Ubuntu Desktop"
+layout: post 
+toc: false 
+comments: true 
+hide: false 
+categories: [jellyfin, GPU, Ubuntu, WiFi]
+image: images/jellyfin-nvidia.png
 ---
-I have an Ubuntu desktop machine with an old Nvidia card.  It has OKish specs, but it is a bit noisy for my liking.  In short, I've made it into a publicly accessible Jellyfin media server with Traefik+Wireguard and moved it to the corner of my place with USB WiFi stick plugged in.
+I have an Ubuntu desktop machine with an old Nvidia card. It has OKish specs, but it is a bit noisy for my liking. In
+short, I've made it into a publicly accessible Jellyfin media server with Traefik+Wireguard and moved it to the corner
+of my place with USB WiFi stick plugged in.
 
 # WiFi
 
@@ -24,7 +26,7 @@ iwconfig
 sudo ifconfig wlp4s0 up
 ```
 
-3. check available  wireless networks
+3. check available wireless networks
 
 ```bash
 sudo iwlist wlp4s0 scan | grep ESSID
@@ -42,7 +44,7 @@ sudo wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0
 sudo dhclient wlp4s0
 ```
 
-5.  Autoconnect to WiFi after reboot
+5. Autoconnect to WiFi after reboot
 
 ```bash
 # crontab for the user root
@@ -52,7 +54,7 @@ sudo crontabe -u root -e
 # @reboot sleep 5 && /usr/local/bin/wlan.sh 2>&1 >> /var/log/reboot.log
 ```
 
-![crontab](assets/crontab.png)
+![crontab](images/crontab.png)
 
 ```bash
 #!/bin/bash
@@ -65,7 +67,8 @@ sudo crontabe -u root -e
 
 6. Disable WiFi power saving
 
-- Disable wifi power management directly by editing `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf` and changed the value from 3 to 2, saved changes and reboot.
+- Disable wifi power management directly by editing `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf` and
+  changed the value from 3 to 2, saved changes and reboot.
 
 7. Performance Tweaks
 
@@ -85,7 +88,8 @@ options iwlwifi bt_coex_active=0
 
 # Remote Desktop
 
-I've tried lots of things, then settled for Chrome Remote Desktop.  Official docs are not so reliable, and this gist did the trick.
+I've tried lots of things, then settled for Chrome Remote Desktop. Official docs are not so reliable, and this gist did
+the trick.
 
 Honestly I don't use this at all, but I think it is nice to have.
 
@@ -95,7 +99,8 @@ Honestly I don't use this at all, but I think it is nice to have.
 
 1. Service
 
-Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command line for this. You have to install nvidia-docker2 before hand.
+Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
+line for this. You have to install nvidia-docker2 before hand.
 
 ```bash
 docker run -d \
@@ -114,7 +119,14 @@ docker run -d \
  jellyfin/jellyfin:unstable
 ```
 
-2. Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have to login with your account in the plugin settings page.
+Since it is sharing(`--pid host`) PID namespace with host,
+you can run `nvidia-smi` on host machine directly to see if Jellyfin is using GPU when transcoding content.
+
+![jellyfin-nvidia](images/jellyfin-nvidia.png)
+
+
+2. Register an [OpenSubtitles.org](http://opensubtitles.org) account and install the plugin for the Jellyfin. You have
+   to login with your account in the plugin settings page.
 
 # Syncing Remote Folders
 
