@@ -9,10 +9,10 @@ categories: [Ubuntu, Systemd]
 ---
 
 
-If you want to use custom DNS service which most likely run on port 53
+In Ubuntu, if you want to use custom DNS services which most likely run on port 53
 you have to disable `systemd-resolved` first to vacate the port.
 
-1. edit `/etc/systemd/resolved.conf`
+* edit `/etc/systemd/resolved.conf`
 Add two lines:
    
 `DNS=8.8.8.8`
@@ -48,7 +48,7 @@ DNSStubListener=no
 ```
 
 
-2. `sudo systemctl restart systemd-resolved`
+* `sudo systemctl restart systemd-resolved`
 
 
 All set.
