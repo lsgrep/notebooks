@@ -14,7 +14,7 @@ of my place with USB WiFi stick plugged in.
 
 # WiFi
 
-- You have install kernel drivers and the drivers are vendor specific.
+- You have install kernel drivers for the WiFi stick first, and the drivers are vendor specific.
 
 - check available devices
 
@@ -95,7 +95,8 @@ the trick.
 
 Honestly I don't use this at all, but I think it is nice to have.
 
-![https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b](https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b)
+{% gist ae09f72bd5badc64d4727a0d38fc590b %}
+[https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b](https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b)
 
 # Media Server
 
