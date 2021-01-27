@@ -109,13 +109,13 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>If you want to use custom DNS service which most likely run on port 53
+    <p>In Ubuntu, if you want to use custom DNS services which most likely run on port 53
 you have to disable <code class="language-plaintext highlighter-rouge">systemd-resolved</code> first to vacate the port.</p>
 
-<ol>
+<ul>
   <li>edit <code class="language-plaintext highlighter-rouge">/etc/systemd/resolved.conf</code>
 Add two lines:</li>
-</ol>
+</ul>
 
 <p><code class="language-plaintext highlighter-rouge">DNS=8.8.8.8</code></p>
 
@@ -148,9 +148,9 @@ DNSStubListener=no
 #ResolveUnicastSingleLabel=no
 </code></pre></div></div>
 
-<ol>
+<ul>
   <li><code class="language-plaintext highlighter-rouge">sudo systemctl restart systemd-resolved</code></li>
-</ol>
+</ul>
 
 <p>All set.</p>
 
