@@ -123,10 +123,15 @@ of my place with USB WiFi stick plugged in.</p>
 <h1 id="wifi">WiFi</h1>
 
 <ul>
-  <li>check available devices</li>
+  <li>
+    <p>You have install kernel drivers and the drivers are vendor specific.</p>
+  </li>
+  <li>
+    <p>check available devices</p>
+  </li>
 </ul>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">iwconfig</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iwconfig
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">wlp4s0</code> is the device name for my USB WiFi stick.</p>
@@ -162,17 +167,15 @@ wpa_passphrase your-ESSID your-wifi-passphrase | <span class="nb">sudo tee</span
   <li>Autoconnect to WiFi after reboot</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># crontab for the user root</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># crontab for the root</span>
 <span class="nb">sudo </span>crontabe <span class="nt">-u</span> root <span class="nt">-e</span>
 
 <span class="c"># content of crontab</span>
-<span class="c"># @reboot sleep 5 &amp;&amp; /usr/local/bin/wlan.sh 2&gt;&amp;1 &gt;&gt; /var/log/reboot.log</span>
+<span class="c"># @reboot sleep 5 &amp;&amp; /usr/local/bin/wifi.sh 2&gt;&amp;1 &gt;&gt; /var/log/reboot.log</span>
 </code></pre></div></div>
 
-<p><img src="/images/crontab.png" alt="crontab" /></p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="c"># wlan.sh</span>
+<span class="c"># wifi.sh</span>
 /usr/sbin/rfkill unblock wifi <span class="o">||</span> <span class="nb">true</span>
 /sbin/ifconfig wlp4s0 up <span class="o">||</span> <span class="nb">true</span>
 /sbin/wpa_supplicant <span class="nt">-B</span> <span class="nt">-c</span> /etc/wpa_supplicant.conf <span class="nt">-i</span> wlp4s0 <span class="o">||</span> <span class="nb">true</span>
@@ -208,19 +211,19 @@ options iwlwifi <span class="nv">bt_coex_active</span><span class="o">=</span>0
 
 <h1 id="remote-desktop">Remote Desktop</h1>
 
-<p>I’ve tried lots of things, then settled for Chrome Remote Desktop. Official docs are not so reliable, and this gist did
+<p>I’ve tried lots of things for remote desktop, then settled for Chrome Remote Desktop. Official docs are not so reliable, and this gist did
 the trick.</p>
 
 <p>Honestly I don’t use this at all, but I think it is nice to have.</p>
 
-<p><a href="https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b">https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b</a></p>
+<p><img src="https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b" alt="https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b" /></p>
 
 <h1 id="media-server">Media Server</h1>
 
 <ul>
   <li>Jellyfin is free &amp; open source, and it is not bloated with ads.
-Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
-line for this. You have to install nvidia-docker2 before hand.</li>
+Start Jellyfin with Nvidia hardware acceleration enabled(You can check out <a href="https://jellyfin.org/docs/general/administration/hardware-acceleration.html">docs</a> for more). Docker-compose is buggy with GPUs, so I have to use command
+line for this. You have to install <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker2</a> before hand.</li>
 </ul>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
