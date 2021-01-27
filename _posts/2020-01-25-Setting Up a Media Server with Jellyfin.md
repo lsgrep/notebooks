@@ -14,9 +14,11 @@ of my place with USB WiFi stick plugged in.
 
 # WiFi
 
+- You have install kernel drivers and the drivers are vendor specific.
+
 - check available devices
 
-```jsx
+```bash
 iwconfig
 ```
 
@@ -49,18 +51,16 @@ sudo dhclient wlp4s0
 - Autoconnect to WiFi after reboot
 
 ```bash
-# crontab for the user root
+# crontab for the root
 sudo crontabe -u root -e
 
 # content of crontab
-# @reboot sleep 5 && /usr/local/bin/wlan.sh 2>&1 >> /var/log/reboot.log
+# @reboot sleep 5 && /usr/local/bin/wifi.sh 2>&1 >> /var/log/reboot.log
 ```
-
-![crontab](/images/crontab.png)
 
 ```bash
 #!/bin/bash
-# wlan.sh
+# wifi.sh
 /usr/sbin/rfkill unblock wifi || true
 /sbin/ifconfig wlp4s0 up || true
 /sbin/wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0 || true
@@ -90,18 +90,18 @@ options iwlwifi bt_coex_active=0
 
 # Remote Desktop
 
-I've tried lots of things, then settled for Chrome Remote Desktop. Official docs are not so reliable, and this gist did
+I've tried lots of things for remote desktop, then settled for Chrome Remote Desktop. Official docs are not so reliable, and this gist did
 the trick.
 
 Honestly I don't use this at all, but I think it is nice to have.
 
-[https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b](https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b)
+![https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b](https://gist.github.com/organizm/ae09f72bd5badc64d4727a0d38fc590b)
 
 # Media Server
 
 - Jellyfin is free & open source, and it is not bloated with ads.
-Start Jellyfin with Nvidia hardware acceleration enabled. Docker-compose is buggy with GPUs, so I have to use command
-line for this. You have to install nvidia-docker2 before hand.
+Start Jellyfin with Nvidia hardware acceleration enabled(You can check out [docs](https://jellyfin.org/docs/general/administration/hardware-acceleration.html) for more). Docker-compose is buggy with GPUs, so I have to use command
+line for this. You have to install [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker) before hand.
 
 ```bash
 docker run -d \
